@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../res/fonts/Gotham-Light.otf');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../res/fonts/Gotham-Thin.otf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../res/fonts/Gotham-Bold.otf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Bebas-Neue';
+    src: url('../res/fonts/BebasNeue-Regular.ttf');
+}
