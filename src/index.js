@@ -6,6 +6,9 @@ function init() {
     $("#header-kal").remove();
     $("#home-page").remove();
     $("#ko-head").remove();
+    $("#crutch").remove();
+    $("body").removeClass();
+    $("footer").removeClass();
   });
 }
 
@@ -35,8 +38,6 @@ function goToMainScreen() {
     $.get('./components/ko-head.html', function(data) {
       $("footer").append(data);
     });
-  
-    $("body").append("<div></div>");
     $("body").addClass("bg-misty-rose z-10 h-screen justify-between flex flex-col overflow-hidden");
     $("footer").addClass("absolute z-0 bottom-0 items-center w-full flex justify-center");
   });
@@ -45,7 +46,10 @@ function goToMainScreen() {
 goToMainScreen();
 
 function transitionKalBackwards() {
-  let transition = new TimelineMax({onComplete: transitionToIndex()}).fromTo(
+  let transition = new TimelineMax({onComplete: function() {
+    init();
+    goToMainScreen();
+  }}).fromTo(
     "#transition-page",
     1.9,
     { y: -screenHeight },
@@ -78,8 +82,5 @@ function transitionKal() {
 }
 
 function transitionToIndex() {
-    transitionKalBackwards();
-    init();
-    goToMainScreen();
-    transitionKal();
+  transitionKalBackwards();
 }
