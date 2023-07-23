@@ -5,6 +5,7 @@ module.exports = {
     fontFamily: {
       'sans': ['Gotham'],
       'bebasNeue' : 'Bebas Neue',
+      'cosmos' : 'cosmos',
     },
     extend: {
       colors: {
@@ -12,7 +13,7 @@ module.exports = {
         'misty-rose' : '#F1D9D9',
         'dessert-yellow' : '#FADA6C',
         'ultramarine-blue' : '#279AF1',
-        'gunmental-grey' : '#2F323A',
+        'gunmental' : '#2F323A',
     },
   }
   },

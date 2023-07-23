@@ -22,3 +22,8 @@
     font-family: 'Bebas-Neue';
     src: url('../res/fonts/BebasNeue-Regular.ttf');
 }
+
+@font-face {
+    font-family: 'cosmos';
+    src: url('../res/fonts/planet-cosmos.ttf');
+}

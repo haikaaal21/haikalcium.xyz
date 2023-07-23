@@ -14,3 +14,4 @@ export function fetchWorldTime() {
     });
 }
   setInterval(fetchWorldTime, 1000);
+  
