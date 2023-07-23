@@ -1,6 +1,11 @@
-export function fetchWorldTime() {
+ function fetchWorldTime() {
   fetch('http://worldtimeapi.org/api/ip')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
       const { day_of_week, datetime, timezone } = data;
       const formattedDate = new Date(datetime).toLocaleTimeString('en-US', { timeZone: timezone });
@@ -10,7 +15,8 @@ export function fetchWorldTime() {
       $('#time-text').text(formattedOutput); 
     })
     .catch(error => {
-      $('#time').text('API IS DOWN');
+      console.error('Error fetching world time:', error);
+      $('#time-text').text('Loading time...');
     });
 }
   setInterval(fetchWorldTime, 1000);

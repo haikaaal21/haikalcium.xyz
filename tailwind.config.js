@@ -6,6 +6,8 @@ module.exports = {
       'sans': ['Gotham'],
       'bebasNeue' : 'Bebas Neue',
       'cosmos' : 'cosmos',
+      'times-new-roman' : 'times-new-roman',
+      'exposition' : 'exposition',
     },
     extend: {
       colors: {
@@ -14,6 +16,7 @@ module.exports = {
         'dessert-yellow' : '#FADA6C',
         'ultramarine-blue' : '#279AF1',
         'gunmental' : '#2F323A',
+        'bittersweet-shimmer' : '#C44549',
     },
   }
   },

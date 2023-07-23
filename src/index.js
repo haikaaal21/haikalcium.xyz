@@ -1,12 +1,11 @@
 const screenHeight = window.screen.height;
+gsap.registerPlugin(TextPlugin);
 
-//Make an init function that cleans the index.html from any appends
-function init() {
+function init(listToRemove) {
   $(document).ready(function() {
-    $("#header-kal").remove();
-    $("#home-page").remove();
-    $("#ko-head").remove();
-    $("#crutch").remove();
+    $.each(listToRemove, function(index, whatToRemove) {
+      $(whatToRemove).remove();
+    });
     $("body").removeClass();
     $("footer").removeClass();
   });
@@ -31,6 +30,13 @@ function goToMainScreen() {
       $("header").append(data);
     });
 
+    $(document).ready(function() {
+      $(document).off("click", "#directories-button");
+      $(document).on("click", "#directories-button", function() {
+        openDirectoriesFromIndex();
+      });
+    })
+
     $.get('./routes/home_page.html', function(data) {
       $(data).insertAfter("header");
     });
@@ -45,9 +51,9 @@ function goToMainScreen() {
 
 goToMainScreen();
 
-function transitionKalBackwards() {
+function transitionKalBackwards(listToRemove) {
   let transition = new TimelineMax({onComplete: function() {
-    init();
+    init(listToRemove);
     goToMainScreen();
   }}).fromTo(
     "#transition-page",
@@ -82,5 +88,54 @@ function transitionKal() {
 }
 
 function transitionToIndex() {
-  transitionKalBackwards();
+  const listToRemove = ["#header-kal", "#home-page", "#ko-head", "#crutch", "#directory-page"];
+  transitionKalBackwards(listToRemove);
 }
+
+function openDirectoriesFromIndex() {
+  const listToRemove = ["#header-kal", "#home-page", "#ko-head", "#crutch"];
+  $.get("./routes/directory_page.html", function(data) {
+    $("header").removeClass("z-20");
+    $("header").addClass("z-20");
+    $("body").append(data);
+    directoriesTransition("#home");
+  });
+  console.log("open directories");
+}
+
+function directoriesTransition(selectedIndex) {
+  let transDirectory = new TimelineMax({ }).fromTo("#d1", 0.8, { y:-screenHeight }, { y:0  ,ease:"power4.out"});
+    let transDirectory2 = new TimelineMax({ }).fromTo("#d2", 1.2, { y:screenHeight }, { y:0  ,ease:"power4.out"});
+    let transDirectory3 = new TimelineMax({ }).fromTo("#d3", 1.7, { y:-screenHeight }, { y:0  ,ease:"power4.out"});
+    let transDirectory4 = new TimelineMax({ }).fromTo("#d4", 2, { y:screenHeight }, { y:0  ,ease:"power4.out"}, );
+    let content = new TimelineMax({ }).fromTo("#content", 0.8, { opacity:0, y:120 }, { opacity:1, y:0 ,ease:"power4.easeOut"});
+    let directText = new TimelineMax({ }).fromTo("#directories-button", 0.8, {text:"Directories"}, { text:"Close[X]",ease:"power4.easeIn"});
+    let header = new TimelineMax({ }).fromTo("#header-kal", 0.8, {}, {color: "white" ,ease:"power4.easeOut"});
+    $("#header-p").removeClass("hover:text-indian-red");
+    $("#header-p").addClass("hover:text-dessert-yellow");
+    $(selectedIndex).addClass("font-times-new-roman");
+    $("#directories-button").removeAttr("onclick");
+    $.get("./components/you-are-here.html", function(data) {
+      let dataToAppend = $(data);
+      $(dataToAppend).insertBefore(selectedIndex);
+    });
+    $(document).ready(function() {
+      $(document).off("click", "#directories-button");
+      $(document).on("click", "#directories-button", function() {
+        transDirectory.reverse();
+      transDirectory2.reverse();
+      transDirectory3.reverse();
+      transDirectory4.reverse();
+      content.reverse();
+      directText.reverse();
+      header.reverse();
+      $("#header-p").removeClass("hover:text-dessert-yellow");
+    $("#header-p").addClass("hover:text-indian-red");
+      $(document).on("click", "#directories-button", function() {
+        openDirectoriesFromIndex();
+        $("#directory-page").remove();
+      });
+      });
+    })
+}
+
