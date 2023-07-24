@@ -99,8 +99,37 @@ function openDirectoriesFromIndex() {
     $("header").addClass("z-20");
     $("body").append(data);
     directoriesTransition("#home");
+    const whatToHovers = ["#home", "#about", "#archive", "#contact"];
+    whatToHovers.forEach(whatToHover => {
+      hoverOnStuff(whatToHover);
+    });
   });
   console.log("open directories");
+}
+ 
+function hoverOnStuff(whatToHover) {
+  let animationTimeline;
+  let $addedArrow;
+  $(whatToHover).hover(
+    function() {
+      $.get("./components/arrow.html", function(arrow) {
+        if($(whatToHover).find("#arrow").length <= 0) {
+        $(whatToHover).prepend(arrow);
+        }
+        $addedArrow = $(whatToHover).find("#arrow"); 
+        $paragraph = $(whatToHover).find("li"); 
+        animationTimeline = new TimelineMax({});
+        animationTimeline.fromTo($paragraph, 0.5, { x: 0 }, { x: 25, ease: Power2.easeOut }).fromTo($addedArrow, 0.5, { x: 0, opacity:0 }, { x: 20, opacity:1, ease: Power2.easeOut }, "-=0.2");
+      });
+    },
+    function() {
+        animationTimeline.reverse();
+        animationTimeline.eventCallback("onReverseComplete", function() {
+          $($addedArrow).remove();
+        });
+    }
+  );
+  
 }
 
 function directoriesTransition(selectedIndex) {
