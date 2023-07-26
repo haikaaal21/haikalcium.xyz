@@ -1,4 +1,4 @@
-<div id="directory-page" class="z-10 absolute w-full h-screen">
+<div id="directory-page" class="z-10 fixed top-0 left-0 w-screen h-screen">
   <div class="absolute z-0 w-full">
     <div class="flex">
       <div
@@ -35,10 +35,18 @@
       <ul
         class="text-white flex flex-col items-start md:text-[5rem] lg:text-[6rem] 2xl:text-[7rem]"
       >
-        <button id="home" class="flex items-center py-[2%]">
+        <button
+          id="home"
+          class="flex items-center py-[2%]"
+          onclick="goToMainScreenFromDirectory()"
+        >
           <li class="leading-none">HOME</li>
         </button>
-        <button id="about" class="flex items-center py-[2%]">
+        <button
+          id="about"
+          class="flex items-center py-[2%]"
+          onclick="navigateToAboutMe()"
+        >
           <li class="leading-none">ABOUT ME</li>
         </button>
         <button id="archive" class="flex items-center py-[2%]">
@@ -57,18 +65,40 @@
         <ul class="italic">
           <li>
             <a
-              class="underline"
+              class="underline hover:text-dessert-yellow duration-300 ease-out"
               href="https:www.linkedin.com/in/muhammad-haikal-715273261"
+              target="_blank"
               >LinkedIn</a
             >
             •
           </li>
           <li>
-            <a class="underline" href="">muhammad.haikal100602@gmail.com</a>
+            <a
+              class="underline hover:text-dessert-yellow duration-300 ease-out"
+              href="mailto: muhammad.haikal100602@gmail.com?subject=Hello%20Kal!&body=Hi%20Kal!%20I'm%20here%20to%20reach%20out%20to%20you!"
+              target="_blank"
+              >muhammad.haikal100602@gmail.com</a
+            >
             •
           </li>
-          <li><a class="underline" href="">Github</a> •</li>
-          <li><a class="underline" href="">Instagram</a> •</li>
+          <li>
+            <a
+              class="underline hover:text-dessert-yellow duration-300 ease-out"
+              href="https://github.com/haikaaal21"
+              target="_blank"
+              >Github</a
+            >
+            •
+          </li>
+          <li>
+            <a
+              class="underline hover:text-dessert-yellow duration-300 ease-out"
+              href="https://www.instagram.com/haikaaal21/"
+              target="_blank"
+              >Instagram</a
+            >
+            •
+          </li>
         </ul>
       </div>
       <p>
