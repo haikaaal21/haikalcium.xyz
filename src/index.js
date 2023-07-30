@@ -83,6 +83,7 @@ function routeToContact() {
  *  These methods appends everything and instantiates the CSS using TailwindCSS
  */
 
+// ? The builders working on other methods except the goToHome() method
 function buildMainPage() {
   var headerClassCSS = 'bg-misty-rose z-10 h-screen justify-center flex flex-col overflow-hidden';
   var footerClassCSS = 'absolute z-0 bottom-0 items-center w-full flex justify-center';
@@ -96,6 +97,7 @@ function buildMainPage() {
   $("footer").addClass(footerClassCSS);
 } 
 
+//TODO: Build the about me loopers and create the constants for the containers
 function buildAboutMe() {
   var bodyClassCSS = 'bg-misty-rose z-10 h-screen flex flex-col';
   $("body").addClass(bodyClassCSS);
@@ -105,8 +107,27 @@ function buildAboutMe() {
   $.get('./components/formal-footer.html', function(footer){
     $(footer).appendTo("footer");
   })
+
+  //! ERROR WITH THE NAMINGS
+  //? Learn how to fetch the data and not use the ID to replace the text
+  for(i=0; i<cv.length ; i++){
+    (function (index) {
+      $.get('./components/container.html', function (container) {
+        console.log(cv[index].whereToPut);
+        $(container).insertAfter(cv[index].whereToPut);
+        $('#title').text(cv[index].title);
+        $('#subtitle').text(cv[index].subtitle);
+        $('#date').text(cv[index].date);
+      });
+    })(i);
+  }
+
+  $.get('./components/underline.html', function(underline){
+    $(underline).insertBefore('#cv');
+  })
 }
 
+//TODO: Create the contact page HTML
 function buildContact() {
   var bodyClassCSS = 'bg-misty-rose z-10 h-screen flex flex-col';
   $("body").addClass(bodyClassCSS);
@@ -116,6 +137,7 @@ function buildContact() {
   })
 }
 
+//TODO: Create the archive page HTML
 function buildArchive() {
   var bodyClassCSS = 'bg-misty-rose z-10 h-screen flex flex-col';
   $("body").addClass(bodyClassCSS);
@@ -123,10 +145,6 @@ function buildArchive() {
   $.get('./components/formal-footer.html', function(footer){
     $(footer).appendTo("footer");
   })
-}
-
-function buildContainer() {
-
 }
 
 function buildIndicator(currentPage) {
@@ -171,6 +189,10 @@ function buildDirectoriesPage() {
  * Animation initializers
  * This method initializes the transition animation if it does not exist
  * This methoda also plays the transition if needed
+ * 
+ * * LOGS
+ * ! Issues with the builder, not calling back
+ * ? Check on the builder
  */
 
 function initializeTransition(reverse) {
@@ -235,6 +257,9 @@ function toggleDirectory() {
     buildIndicator(currentPage);
 }
 
+// * LOGS
+// ! This method is not calling the builder
+// ? Check on the builder, or the method itself
 function goToHome() {
   if(directoryOpened == false) {
     toggleDirectory();
@@ -257,3 +282,11 @@ function directoryBtnListener(functionToCall, nameOfButton ) {
     functionToCall();
   });
 }
+
+const cv = [
+  {whereToPut: '#cv', title: 'Universiti Utara Malaysia', subtitle: 'Information Technology; Major in Software Engineering', date: '2021 - 2025'}, 
+  {whereToPut: '#awards', title: 'Top 10 Runner-ups', subtitle: 'Innovation and Technology Challenge - 21', date: 'February 2023'}, 
+  {whereToPut: '#awards', title: 'Top 5 Finalists', subtitle: 'NeRACA Capture the Flags', date: '27 February 2023'}, 
+  {whereToPut: '#awards', title: "Dean's Awards A211 Session", subtitle: 'Universiti Utara Malaysia', date: '11 June 2023'}, 
+  {whereToPut: '#certifications', title: "Band - 7", subtitle: 'International English Language Test System', date: '16 September 2021'}, 
+]
