@@ -26,7 +26,7 @@ const routes = [
     pageName: '#archive',
     bodyPath: './routes/archive.html',
     footer: '#footer-2',
-    bodyClass:'bg-crayola-red overflow-x-hidden z-10 h-screen flex flex-col ',
+    bodyClass:'bg-misty-rose overflow-x-hidden z-10 h-screen flex flex-col ',
   }
   // TODO : add more routes here
 ];
@@ -44,7 +44,48 @@ const cv = [
   {whereToPut: '#awards', title: 'Top 5 Finalists', subtitle: 'NeRACA Capture the Flags', date: '27 February 2023'}, 
   {whereToPut: '#awards', title: "Dean's Awards A211 Session", subtitle: 'Universiti Utara Malaysia', date: '11 June 2023'}, 
   {whereToPut: '#certifications', title: "Band - 7", subtitle: 'International English Language Test System', date: '16 September 2021'}, 
-]
+] 
+
+const projects = [
+  {
+    name: "haikalcium.xyz",
+    imagePath: "../res/img/haikalcium.png",
+    projectDescription: "The project was designed, developed, and launched by myself, I had a huge help by @TinkeringTurian to set up and evaluate every step of this project.<br /><br />haikalcium.xyz serves as a medium for me and my employers, having the sole purpose to display my current skills and keeping track of my past experiences, other than that it also serves as a place for me to experiment with new technologies and frameworks.",
+    projectBriefDescription: 'My first ever passion project.',
+    projectLinks: "",
+    timeline: 'July 2023 - August 2023',
+  },
+  {
+    name: "JOMMAWA",
+    imagePath: "../res/img/jommawa.png",
+    projectDescription: "Jommawa is an e-commerce application that targets university students to rent/sell their belongings to other students, the project was submitted to a hackathon but was rejected due to the rules stating that only locals may apply.<br /><br />I was responsible on handling the UI and general design, team coordination, and creating marketing resources.",
+    projectBriefDescription: 'Helping university students finding their way around the tough economy!',
+    projectLinks: "",
+    timeline: 'April 2023 - April 2023',
+  },
+  {
+    name: "TERRA",
+    imagePath: "../res/img/terra.png",
+    projectDescription: "TERRA is a project that revolves around the idea of reusing waste of any kind, the project is still in it's design phase as it requires improvements.<br /><br />The project was designed by me and data research was provided by my co-workers and I, the project was submitted to a virtual hackathon by Universiti Sains Malaysia named Varsity Hackathon.",
+    projectBriefDescription: 'Reducing the world\'s waste little by little.',
+    projectLinks: "",
+    timeline: 'February 2023 - March 2023',
+  },
+  {
+    name: "MyDusun",
+    imagePath:"../res/img/mydusun.jpg",
+    projectDescription: "MyDusun is a mobile application designated to help local farmers to sell their produces without any middleman involved, the project was pitched by me in a competition named Innovation and Technology Challenge - 21 by Universiti Malaya, the project was almost successful as it managed to receive the prize of RM500 in funding as a top-10 runner-up in the competition, the project has also received a patent under Universiti Utara Malaysia.<br /><br />My responsibility and involvement in this project is both to design the application's user-interface, design the technology stack, lead and train my development team, pitch the project and implement the codes aswell. ",
+    projectBriefDescription: 'Experience the true nature of local agriculture.',
+    projectLinks: [
+      {icon : '', link: 'https://drive.google.com/file/d/1booE4qXN3jPXnuXkJvn9xyPnKD8gwFfx/view?usp=sharing', title:'Video Pitch'},
+      {icon : '', link: 'https://docs.google.com/document/d/10pa_Vj-gnSEidkQyIHE882zCWS6oUm7Yzlsatw54DQQ/edit', title:'Technical Report'},
+      {icon:'', link:'https://drive.google.com/file/d/1y3-DEXssj4x4xi4gqC3o0yO_p6K7ZzAu/view?usp=sharing', title:'Poster'}
+    ],
+    timeline: 'April 2022 - February 2023',
+  },
+];
+
+
 
 const screenHeight = window.screen.height;
 gsap.registerPlugin(TextPlugin,ScrollTrigger);
@@ -62,6 +103,8 @@ content = new TimelineMax({ paused: true }).fromTo("#content", 0.8, { opacity: 0
 directText = new TimelineMax({ paused: true }).fromTo("#directories-button", 0.8, { text: "Directories" }, { text: "Close[X]", ease: "power4.easeIn" });
 header = new TimelineMax({ paused: true }).fromTo("#header-wrapper", 0.8, {}, { color: "white", ease: "power4.easeOut" });
 
+// * Peek animation
+let footerAnimation;
 
 // * Components
 let youAreHere = `
@@ -74,10 +117,36 @@ let youAreHere = `
 </span>
 `;
 
+function returnTemplate(item, index, classBottom) {
+  
+  return `<div id="work-${index}" class ='pt-[2%] ${classBottom}'>
+  <div id="rollTape-${index}" class="w-full scale-[110%] bg-dessert-yellow rotate-[6deg] py-4">
+    <div class="border-y-2 border-gunmental border-dashed">
+      <div class="font-bold md:text-[3rem] px-[7%]">${item.name}</div>
+    </div>
+  </div>
+  <div class="flex pt-[5%] 2xl:mx-[10%] px-[4%]">
+    <div class="w-[50%]   mr-[3%]">
+      <img src="${item.imagePath}" alt="" class="shadow-xl shadow-indian-red " />
+    </div>
+    <div class="w-[50%]">
+    <p class="font-bold italic md:text-[2rem] uppercase ">${item.projectBriefDescription}</p>
+    <p>${item.timeline}</p>
+    <p class="md:text-[1rem] "><i class="fa-solid fa-pen-nib"></i>
+    Brief description of this project: </p> </br>
+      <p class="text-justify md:text-[1.15rem]">
+        ${item.projectDescription}
+      </p>
+    </div>
+  </div>
+</div>`;
+}
+
 function init() {
   $('#directory-page').hide();
   playTransition(false);
   delegator('home');
+  footerAnimation = new TimelineMax({ paused: true }).fromTo("#footer-1", 1.2, { y: 0 }, { y: -70, ease: "Power4.easeInOut" });
 }
 
 // todo : Create the function to go back to the home page
@@ -108,6 +177,33 @@ function delegator(indicator) {
        // todo : Import images and links if needed
       buildPage(routes[2].bodyPath, routes[2].footer, routes[2].bodyClass).then(() => {
         footer2Animation();
+          for (let i = 0; i < projects.length; i++) {
+            let condition = 'pb-[18%]';
+            if(i == projects.length - 1) {
+              condition = '';
+            }
+            $("#body").append(returnTemplate(projects[i], i, condition))
+          }
+          let rollTapeAnimations = [];
+          for (let i = 0; i < projects.length; i++) {
+            let revealWork = gsap.timeline({
+              scrollTrigger : {
+                trigger: `#work-${i}`,
+                start: "top center-=20%",
+                end: 'bottom center',
+              }
+            });
+            revealWork.from(`#work-${i}`, {opacity: 0,y:-400 , duration: 2.4, ease: Power4.easeOut});
+            let rolltapeAnimation = gsap.timeline({
+              scrollTrigger : {
+                trigger: `#rollTape-${i}`,
+                start: "bottom center",
+                end: 'bottom center',
+              }
+            })
+            rolltapeAnimation.from(`#rollTape-${i}`, {x: -3000, duration: 1.4, ease: Power4.easeOut});
+            rollTapeAnimations.push(rolltapeAnimation);
+          }
       });
       // TODO : add more cases here
   }
@@ -179,15 +275,29 @@ function playTransition(reverse) {
   }
 }
 
+let transitionTrigger;
 function footer2Animation() {
-  let transitionTrigger = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#footer-2",
-      toggleActions: "play reverse play reverse",
-    },
-  });
-  transitionTrigger.from("#koko-head", { y: 100, duration: 0.9 });
+   // ! There's a little bug with the extension
+   transitionTrigger = null;
+    transitionTrigger = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#footer-2",
+        start: 'bottom bottom',
+      },
+    });
+    transitionTrigger.from("#koko-head", { y: 100, duration: 2.8 });
+  console.log(transitionTrigger);
 }
+
+
+function peekAnimation() {
+  footerAnimation.play();
+  setTimeout(()=> {
+    footerAnimation.reverse();
+  }, 2500);
+}
+
+setInterval(peekAnimation, 8000);
 
 
 // * Initiator

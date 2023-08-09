@@ -8,3 +8,7 @@
     background: #D26F71;
 }
 
+::selection {
+    background: #C44549;
+    color: #FADA6C;
+  }
