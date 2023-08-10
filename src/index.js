@@ -27,7 +27,14 @@ const routes = [
     bodyPath: './routes/archive.html',
     footer: '#footer-2',
     bodyClass:'bg-misty-rose overflow-x-hidden z-10 h-screen flex flex-col ',
-  }
+  },
+  {
+    pageName: '#contact',
+    bodyPath: './routes/contact.html',
+    footer: '#footer-2',
+    bodyClass:'bg-misty-rose overflow-x-hidden z-10 h-screen flex flex-col ',
+  },
+  
   // TODO : add more routes here
 ];
 
@@ -52,7 +59,9 @@ const projects = [
     imagePath: "../res/img/haikalcium.png",
     projectDescription: "The project was designed, developed, and launched by myself, I had a huge help by @TinkeringTurian to set up and evaluate every step of this project.<br /><br />haikalcium.xyz serves as a medium for me and my employers, having the sole purpose to display my current skills and keeping track of my past experiences, other than that it also serves as a place for me to experiment with new technologies and frameworks.",
     projectBriefDescription: 'My first ever passion project.',
-    projectLinks: "",
+    projectLinks: [
+      {icon:'<i class="fa-solid fa-link"></i>', link:'https://www.haikalcium.xyz', title:'Website Link'},
+    ],
     timeline: 'July 2023 - August 2023',
   },
   {
@@ -60,7 +69,10 @@ const projects = [
     imagePath: "../res/img/jommawa.png",
     projectDescription: "Jommawa is an e-commerce application that targets university students to rent/sell their belongings to other students, the project was submitted to a hackathon but was rejected due to the rules stating that only locals may apply.<br /><br />I was responsible on handling the UI and general design, team coordination, and creating marketing resources.",
     projectBriefDescription: 'Helping university students finding their way around the tough economy!',
-    projectLinks: "",
+    projectLinks: [
+      {icon:'<i class="fa-solid fa-video"></i>', link:'https://youtu.be/QxAd1N10Gf4', title:'Video Pitch'},
+      {icon:'<i class="fa-solid fa-mobile"></i>', link:'https://www.figma.com/proto/V7Z7JRtKYtRBYo736p6HyS/JOMMAWA?type=design&node-id=140-1225&t=SoVJIEd1P64zRsVU-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=18%3A724&show-proto-sidebar=1&mode=design', title:'Low Fidelity Prototype'},
+    ],
     timeline: 'April 2023 - April 2023',
   },
   {
@@ -68,7 +80,10 @@ const projects = [
     imagePath: "../res/img/terra.png",
     projectDescription: "TERRA is a project that revolves around the idea of reusing waste of any kind, the project is still in it's design phase as it requires improvements.<br /><br />The project was designed by me and data research was provided by my co-workers and I, the project was submitted to a virtual hackathon by Universiti Sains Malaysia named Varsity Hackathon.",
     projectBriefDescription: 'Reducing the world\'s waste little by little.',
-    projectLinks: "",
+    projectLinks: [
+      {icon: '<i class="fa-solid fa-video"></i>', link: "https://youtu.be/l38rq1MFdKk", title: "Video Pitch"},
+      {icon:'<i class="fa-solid fa-mobile"></i>', link:"https://www.figma.com/proto/7LNfuGYC2JKINBUvjAvTyK/Proyek-VHACK?node-id=22-196&starting-point-node-id=22%3A196", title:"Low fidelity prototype"}
+    ],
     timeline: 'February 2023 - March 2023',
   },
   {
@@ -77,9 +92,8 @@ const projects = [
     projectDescription: "MyDusun is a mobile application designated to help local farmers to sell their produces without any middleman involved, the project was pitched by me in a competition named Innovation and Technology Challenge - 21 by Universiti Malaya, the project was almost successful as it managed to receive the prize of RM500 in funding as a top-10 runner-up in the competition, the project has also received a patent under Universiti Utara Malaysia.<br /><br />My responsibility and involvement in this project is both to design the application's user-interface, design the technology stack, lead and train my development team, pitch the project and implement the codes aswell. ",
     projectBriefDescription: 'Experience the true nature of local agriculture.',
     projectLinks: [
-      {icon : '', link: 'https://drive.google.com/file/d/1booE4qXN3jPXnuXkJvn9xyPnKD8gwFfx/view?usp=sharing', title:'Video Pitch'},
-      {icon : '', link: 'https://docs.google.com/document/d/10pa_Vj-gnSEidkQyIHE882zCWS6oUm7Yzlsatw54DQQ/edit', title:'Technical Report'},
-      {icon:'', link:'https://drive.google.com/file/d/1y3-DEXssj4x4xi4gqC3o0yO_p6K7ZzAu/view?usp=sharing', title:'Poster'}
+      {icon : '<i class="fa-solid fa-video"></i>', link: 'https://drive.google.com/file/d/1booE4qXN3jPXnuXkJvn9xyPnKD8gwFfx/view?usp=sharing', title:'Video Pitch'},
+      {icon : '<i class="fa-solid fa-file"></i>', link: 'https://docs.google.com/document/d/10pa_Vj-gnSEidkQyIHE882zCWS6oUm7Yzlsatw54DQQ/edit', title:'Technical Report'},
     ],
     timeline: 'April 2022 - February 2023',
   },
@@ -107,7 +121,7 @@ header = new TimelineMax({ paused: true }).fromTo("#header-wrapper", 0.8, {}, { 
 let footerAnimation;
 
 // * Components
-let youAreHere = `
+let youAreHere = ` 
 <span class="flex" id="indicator">
   <img src="../res/svg/lefty.svg" alt="" class="h-[4%] w-[4%]" />
   <p class="text-[20%] text-left text-dessert-yellow font-exposition mx-3">
@@ -117,9 +131,18 @@ let youAreHere = `
 </span>
 `;
 
-function returnTemplate(item, index, classBottom) {
-  
-  return `<div id="work-${index}" class ='pt-[2%] ${classBottom}'>
+function returnTemplate(item, index) {
+  let html2 = "";
+  for (let i = 0; i < item.projectLinks.length; i++) {
+    let aElement = document.createElement("a");
+    aElement.href = item.projectLinks[i].link;
+    aElement.target = "_blank";
+    aElement.innerHTML = item.projectLinks[i].icon + " " + item.projectLinks[i].title;
+    aElement.className = "hover:text-bittersweet-shimmer hover:tracking-widest duration-300 ease-out"
+    html2 += aElement.outerHTML;
+  }
+
+  return `<div id="work-${index}" class ='pt-[2%]'>
   <div id="rollTape-${index}" class="w-full scale-[110%] bg-dessert-yellow rotate-[6deg] py-4">
     <div class="border-y-2 border-gunmental border-dashed">
       <div class="font-bold md:text-[3rem] px-[7%]">${item.name}</div>
@@ -137,12 +160,21 @@ function returnTemplate(item, index, classBottom) {
       <p class="text-justify md:text-[1.15rem]">
         ${item.projectDescription}
       </p>
+      <ul id="links" class="flex justify-evenly pt-[2%] w-full">
+      ${html2}
+      </ul>
     </div>
   </div>
 </div>`;
 }
 
 function init() {
+  // ? This function makes sure that it takes 1 milisecond first before scrolling to the top
+  window.onload = function() {
+    setTimeout(function() {
+      window.scrollTo(0, 0);
+  }, 100);
+};
   $('#directory-page').hide();
   playTransition(false);
   delegator('home');
@@ -171,41 +203,18 @@ function delegator(indicator) {
             })
       break;
     case 'archive':
-       // todo : Make the onScroll animation on the tapes
-       // todo : make the forLoop for each projects but put it in the archive.html
-       // todo : Create the whole archive
-       // todo : Import images and links if needed
       buildPage(routes[2].bodyPath, routes[2].footer, routes[2].bodyClass).then(() => {
         footer2Animation();
           for (let i = 0; i < projects.length; i++) {
-            let condition = 'pb-[18%]';
-            if(i == projects.length - 1) {
-              condition = '';
-            }
-            $("#body").append(returnTemplate(projects[i], i, condition))
+            $("#body").append(returnTemplate(projects[i], i));
           }
           let rollTapeAnimations = [];
-          for (let i = 0; i < projects.length; i++) {
-            let revealWork = gsap.timeline({
-              scrollTrigger : {
-                trigger: `#work-${i}`,
-                start: "top center-=20%",
-                end: 'bottom center',
-              }
-            });
-            revealWork.from(`#work-${i}`, {opacity: 0,y:-400 , duration: 2.4, ease: Power4.easeOut});
-            let rolltapeAnimation = gsap.timeline({
-              scrollTrigger : {
-                trigger: `#rollTape-${i}`,
-                start: "bottom center",
-                end: 'bottom center',
-              }
-            })
-            rolltapeAnimation.from(`#rollTape-${i}`, {x: -3000, duration: 1.4, ease: Power4.easeOut});
-            rollTapeAnimations.push(rolltapeAnimation);
-          }
+          archiveAnimationCreation(rollTapeAnimations);
       });
-      // TODO : add more cases here
+      break;
+      case 'contact':
+        buildPage(routes[3].bodyPath, routes[3].footer, routes[3].bodyClass);
+        break;
   }
 }
 
@@ -285,11 +294,11 @@ function footer2Animation() {
         start: 'bottom bottom',
       },
     });
-    transitionTrigger.from("#koko-head", { y: 100, duration: 2.8 });
+    transitionTrigger.from("#koko-head", { y: 100, duration: 1.4 });
   console.log(transitionTrigger);
 }
 
-
+// * Animation Controllers
 function peekAnimation() {
   footerAnimation.play();
   setTimeout(()=> {
@@ -299,6 +308,27 @@ function peekAnimation() {
 
 setInterval(peekAnimation, 8000);
 
+function archiveAnimationCreation(rollTapeAnimations) {
+  for (let i = 0; i < projects.length; i++) {
+    let revealWork = gsap.timeline({
+      scrollTrigger: {
+        trigger: `#work-${i}`,
+        start: "top center+=20%",
+        end: 'bottom center',
+      }
+    });
+    revealWork.from(`#work-${i}`, { opacity: 0, y: 300, duration: 2.4, ease: Power4.easeOut });
+    let rolltapeAnimation = gsap.timeline({
+      scrollTrigger: {
+        trigger: `#rollTape-${i}`,
+        start: "top center+=20%",
+        end: 'bottom center',
+      }
+    });
+    rolltapeAnimation.from(`#rollTape-${i}`, { x: -3000, duration: 1.4, ease: Power4.easeOut });
+    rollTapeAnimations.push(rolltapeAnimation);
+  }
+}
 
 // * Initiator
 $(document).ready(init);
@@ -308,6 +338,7 @@ $('#directories-button').click(toggleDirectories);
 $('#about').click(() => delegator('about'));
 $('#home').click(() => delegator('home'));
 $('#archive').click(() => delegator('archive'));
+$('#contact').click(() => delegator('contact'));
 
 // * Directories toggler
 // todo : make the onHover animation for the directory buttn hover
