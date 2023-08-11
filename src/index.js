@@ -31,8 +31,8 @@ const routes = [
   {
     pageName: '#contact',
     bodyPath: './routes/contact.html',
-    footer: '#footer-2',
-    bodyClass:'bg-misty-rose overflow-x-hidden z-10 h-screen flex flex-col ',
+    footer: '#footer-1',
+    bodyClass:'bg-misty-rose overflow-hidden ',
   },
   
   // TODO : add more routes here
