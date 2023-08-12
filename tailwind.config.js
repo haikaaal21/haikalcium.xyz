@@ -17,7 +17,7 @@ module.exports = {
         'ultramarine-blue' : '#279AF1',
         'gunmental' : '#2F323A',
         'bittersweet-shimmer' : '#C44549',
-        'crayola-red' : '#DCD6F7',
+        'tea-green' : '#C4F1BE',
     },
   }
   },

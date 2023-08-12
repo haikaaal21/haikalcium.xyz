@@ -194,7 +194,24 @@ function delegator(indicator) {
   }
   switch (indicator) {
     case 'home':
-      buildPage(routes[0].bodyPath, routes[0].footer, routes[0].bodyClass);
+      buildPage(routes[0].bodyPath, routes[0].footer, routes[0].bodyClass).then(() => {
+        let aboutMeArrowAnim = new TimelineMax({ paused: true }).fromTo("#arrow", 0.8, { x:-10, opacity:0 }, { x: 0, opacity:100, ease: "Power4.easeInOut" });
+        let aboutMeTextAnim = new TimelineMax({ paused: true }).fromTo("#about-me-text", 0.8, { x:-10 }, { x: 0, ease: "Power4.easeInOut" });
+        $('#about-me-btn').on("mouseenter", ()=>{
+          aboutMeArrowAnim.play(), 
+          aboutMeTextAnim.play()
+        }).on("mouseleave", ()=>{
+          aboutMeArrowAnim.reverse(), 
+          aboutMeTextAnim.reverse()
+        });
+        $('#about-me-btn').click(() => {
+          playTransition(true);
+          setTimeout(() => {
+            playTransition(false);
+            delegator('about');
+          }, 2000)
+        });
+      });
       break;
     case 'about':
       buildPage(routes[1].bodyPath, routes[1].footer, routes[1].bodyClass).then(() => {
@@ -262,9 +279,6 @@ function buildContainers() {
                   </div>
                   <h2 id="subtitle" class="text-2xl font-bold">${cv[i].title}</h2>
                 </div>
-                  <div class="absolute" id="test-id">
-                    <p>test!</p>
-                  </div>
                 </div>
                 `;
     $(item).insertAfter(cv[i].whereToPut);
@@ -339,7 +353,17 @@ $('#about').click(() => delegator('about'));
 $('#home').click(() => delegator('home'));
 $('#archive').click(() => delegator('archive'));
 $('#contact').click(() => delegator('contact'));
+$('#haikalcium-button').click(navigateBackToHome);
 
+// * Back to home
+function navigateBackToHome() {
+  playTransition(true);
+  setTimeout(() => {
+    delegator('home');
+    playTransition(false);
+  }, 2000)
+
+}
 // * Directories toggler
 // todo : make the onHover animation for the directory buttn hover
 function toggleDirectories() {
