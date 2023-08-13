@@ -3,10 +3,6 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    screens: {
-      'phone': '320px',
-      ...defaultTheme.screens,
-    },
     fontFamily: {
       'sans': ['Gotham'],
       'bebasNeue' : 'Bebas-Neue',
