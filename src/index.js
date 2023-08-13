@@ -185,7 +185,7 @@ function init() {
     $('#directory-page').hide();
     playTransition(false);
     delegator('home');
-    footerAnimation = new TimelineMax({ paused: true }).fromTo("#footer-1", 1.2, { y: 0 }, { y: `-30%`, ease: "Power4.easeInOut" });
+    footerAnimation = new TimelineMax({ paused: true }).fromTo("#footer-1", 1.2, { y: 0 }, { y: `-50%`, ease: "Power4.easeInOut" });
   }
 }
 
