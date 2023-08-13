@@ -196,7 +196,6 @@ function init() {
 function delegator(indicator) {
   currentPage = '#' + indicator;
   buildIndicator();
-  console.log(currentPage);
   if(directoryOpened) {
     toggleDirectories();
   }
@@ -267,7 +266,6 @@ function buildPage(bodyPath, footer, bodyClass) {
 function buildIndicator() {
   $(pageBefore).removeClass('font-times-new-roman');
   $('#indicator').remove();
-  console.log(currentPage);
   $(youAreHere).insertBefore(currentPage);
   $(currentPage).addClass('font-times-new-roman');
 }
@@ -318,7 +316,6 @@ function footer2Animation() {
       },
     });
     transitionTrigger.from("#koko-head", { y: 100, duration: 1.4 });
-  console.log(transitionTrigger);
 }
 
 // * Animation Controllers
