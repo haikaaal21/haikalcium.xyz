@@ -104,15 +104,15 @@ const projects = [
 const screenHeight = window.screen.height;
 gsap.registerPlugin(TextPlugin,ScrollTrigger);
 // * Main Screen Transition
-transition = new TimelineMax({paused: true}).fromTo("#transition-1", 1.5, { y:0 }, { y: -screenHeight ,ease: Power2.easeIn});
-transition2 = new TimelineMax({paused: true}).fromTo('#transition-2',1.65 ,{ y:0 }, { y: -screenHeight ,ease: Power2.easeIn} )
-transition3 = new TimelineMax({paused: true}).fromTo('#transition-3',1.8 ,{ y:0 }, { y: -screenHeight ,ease: Power2.easeIn} )
+transition = new TimelineMax({paused: true}).fromTo("#transition-1", 1.5, { y:0 }, { y: `-100%` ,ease: Power2.easeIn});
+transition2 = new TimelineMax({paused: true}).fromTo('#transition-2',1.65 ,{ y:0 }, { y: `-100%` ,ease: Power2.easeIn} )
+transition3 = new TimelineMax({paused: true}).fromTo('#transition-3',1.8 ,{ y:0 }, { y: `-100%` ,ease: Power2.easeIn} )
 
 // * Directories transition
-transDirectory = new TimelineMax({ paused: true }).fromTo("#d1", 0.8, { y: -screenHeight }, { y: 0, ease: "power4.out" });
-transDirectory2 = new TimelineMax({ paused: true }).fromTo("#d2", 1.2, { y: screenHeight }, { y: 0, ease: "power4.out" });
-transDirectory3 = new TimelineMax({ paused: true }).fromTo("#d3", 1.7, { y: -screenHeight }, { y: 0, ease: "power4.out" });
-transDirectory4 = new TimelineMax({ paused: true }).fromTo("#d4", 2, { y: screenHeight }, { y: 0, ease: "power4.out" });
+transDirectory = new TimelineMax({ paused: true }).fromTo("#d1", 0.8, { y: `-100%` }, { y: 0, ease: "power4.out" });
+transDirectory2 = new TimelineMax({ paused: true }).fromTo("#d2", 1.2, { y: `100%` }, { y: 0, ease: "power4.out" });
+transDirectory3 = new TimelineMax({ paused: true }).fromTo("#d3", 1.7, { y: `-100%` }, { y: 0, ease: "power4.out" });
+transDirectory4 = new TimelineMax({ paused: true }).fromTo("#d4", 2, { y: `100%` }, { y: 0, ease: "power4.out" });
 content = new TimelineMax({ paused: true }).fromTo("#content", 0.8, { opacity: 0, y: 120 }, { opacity: 1, y: 0, ease: "power4.easeOut" });
 directText = new TimelineMax({ paused: true }).fromTo("#directories-button", 0.8, { text: "Directories" }, { text: "Close[X]", ease: "power4.easeIn" });
 header = new TimelineMax({ paused: true }).fromTo("#header-wrapper", 0.8, {}, { color: "white", ease: "power4.easeOut" });
@@ -168,17 +168,25 @@ function returnTemplate(item, index) {
 </div>`;
 }
 
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 function init() {
   // ? This function makes sure that it takes 1 milisecond first before scrolling to the top
-  window.onload = function() {
-    setTimeout(function() {
-      window.scrollTo(0, 0);
-  }, 100);
-};
-  $('#directory-page').hide();
-  playTransition(false);
-  delegator('home');
-  footerAnimation = new TimelineMax({ paused: true }).fromTo("#footer-1", 1.2, { y: 0 }, { y: -70, ease: "Power4.easeInOut" });
+  if(isMobileDevice()) {
+    window.location.href = "./routes/under-construction.html"
+  } else {
+    window.onload = function() {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+    }, 100);
+  };
+    $('#directory-page').hide();
+    playTransition(false);
+    delegator('home');
+    footerAnimation = new TimelineMax({ paused: true }).fromTo("#footer-1", 1.2, { y: 0 }, { y: `-30%`, ease: "Power4.easeInOut" });
+  }
 }
 
 // todo : Create the function to go back to the home page
@@ -319,6 +327,7 @@ function peekAnimation() {
     footerAnimation.reverse();
   }, 2500);
 }
+
 
 setInterval(peekAnimation, 8000);
 
