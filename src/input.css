@@ -25,7 +25,7 @@
 
 @font-face {
     font-family: 'cosmos';
-    src: url('../res/fonts/planet-cosmos.ttf');
+    src: url('../res/fonts/planet-cosmos.TTF');
 }
 @font-face {
     font-family: 'times-new-roman';
