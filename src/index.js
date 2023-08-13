@@ -1,11 +1,7 @@
 // ! Everything's fucked, back to phase 0 and re-do the whole thing $.get is ACTUAL get
 /**
  * * What TODO :
- * * Don't use multiple $.get operations
- * ? Simplify the component architecture
- * * You can use .hide() and .show() just to do stuff
- * * Maybe put the transition and directory page over at the index.html itself ?
- * ? Refactor components, throw out unnecessary things!
+ * * Fix deployment
  */
 
 // * Routes
