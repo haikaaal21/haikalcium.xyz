@@ -203,6 +203,7 @@ function delegator(indicator) {
   switch (indicator) {
     case 'home':
       buildPage(routes[0].bodyPath, routes[0].footer, routes[0].bodyClass).then(() => {
+        window.scrollTo(0, 0);
         let aboutMeArrowAnim = new TimelineMax({ paused: true }).fromTo("#arrow", 0.8, { x:-10, opacity:0 }, { x: 0, opacity:100, ease: "Power4.easeInOut" });
         let aboutMeTextAnim = new TimelineMax({ paused: true }).fromTo("#about-me-text", 0.8, { x:-10 }, { x: 0, ease: "Power4.easeInOut" });
         $('#about-me-btn').on("mouseenter", ()=>{
