@@ -16,7 +16,7 @@ const routes = [
     pageName : '#about',
     bodyPath: './routes/about-me.html',
     footer: '#footer-2',
-    bodyClass:'bg-misty-rose z-10 h-screen justify-center flex flex-col ',
+    bodyClass:'bg-misty-rose z-10 h-screen flex flex-col ',
   },
   {
     pageName: '#archive',

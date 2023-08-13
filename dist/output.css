@@ -652,8 +652,16 @@ video {
   margin-top: 6rem;
 }
 
-.mt-\[38\%\] {
-  margin-top: 38%;
+.mt-\[20\%\] {
+  margin-top: 20%;
+}
+
+.mt-\[10\%\] {
+  margin-top: 10%;
+}
+
+.mt-\[8\%\] {
+  margin-top: 8%;
 }
 
 .inline-block {
@@ -698,11 +706,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .w-3 {
@@ -1023,10 +1026,6 @@ video {
   padding-top: 6%;
 }
 
-.pt-\[20\%\] {
-  padding-top: 20%;
-}
-
 .text-left {
   text-align: left;
 }
@@ -1098,6 +1097,10 @@ video {
   font-size: 20%;
 }
 
+.text-\[24rem\] {
+  font-size: 24rem;
+}
+
 .text-\[250\%\] {
   font-size: 250%;
 }
@@ -1109,58 +1112,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[25rem\] {
-  font-size: 25rem;
-}
-
-.text-\[10rem\] {
-  font-size: 10rem;
-}
-
-.text-\[15rem\] {
-  font-size: 15rem;
-}
-
-.text-\[150\%\] {
-  font-size: 150%;
-}
-
-.text-\[500\%\] {
-  font-size: 500%;
-}
-
-.text-\[1025\%\] {
-  font-size: 1025%;
-}
-
-.text-\[5000\%\] {
-  font-size: 5000%;
-}
-
-.text-\[300\%\] {
-  font-size: 300%;
-}
-
-.text-\[3000\%\] {
-  font-size: 3000%;
-}
-
-.text-\[2000\%\] {
-  font-size: 2000%;
-}
-
-.text-\[18rem\] {
-  font-size: 18rem;
-}
-
-.text-\[20rem\] {
-  font-size: 20rem;
-}
-
-.text-\[24rem\] {
-  font-size: 24rem;
 }
 
 .font-bold {
@@ -1352,16 +1303,6 @@ video {
   background-color: rgb(39 154 241 / var(--tw-bg-opacity));
 }
 
-@media (min-width: 640px) {
-  .sm\:pt-\[6\%\] {
-    padding-top: 6%;
-  }
-
-  .sm\:text-\[1rem\] {
-    font-size: 1rem;
-  }
-}
-
 @media (min-width: 768px) {
   .md\:my-\[25\%\] {
     margin-top: 25%;
@@ -1374,10 +1315,6 @@ video {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
-  .md\:pt-\[0\%\] {
-    padding-top: 0%;
-  }
-
   .md\:text-\[1\.15rem\] {
     font-size: 1.15rem;
   }
@@ -1388,10 +1325,6 @@ video {
 
   .md\:text-\[20rem\] {
     font-size: 20rem;
-  }
-
-  .md\:text-\[25rem\] {
-    font-size: 25rem;
   }
 
   .md\:text-\[2rem\] {
