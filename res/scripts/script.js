@@ -1,5 +1,5 @@
  function fetchWorldTime() {
-  fetch('http://worldtimeapi.org/api/ip')
+  fetch('https://worldtimeapi.org/api/ip')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
