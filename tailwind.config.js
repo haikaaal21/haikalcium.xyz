@@ -9,7 +9,7 @@ module.exports = {
     },
     fontFamily: {
       'sans': ['Gotham'],
-      'bebasNeue' : 'Bebas Neue',
+      'bebasNeue' : 'Bebas-Neue',
       'cosmos' : 'cosmos',
       'times-new-roman' : 'times-new-roman',
       'exposition' : 'exposition',
