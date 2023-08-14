@@ -106,27 +106,27 @@ function clickFunc(route) {
     openAndCloseTransition();
 }
 function openAndCloseTransition() {
-    var elements = $('#directories-buttons').children();
     directoryOpen = !directoryOpen;
+
     if(directoryOpen) {
-        buildIndicator();
         $('#directories-page').show();
         directoriesTransition.play();
         contentTransition.play();
-
+        buildIndicator();
     }
     else {
+        buildIndicator();
         directoriesTransition.reverse();
         contentTransition.reverse();
         directoriesTransition.eventCallback("onReverseComplete", () => {
             $('#directories-page').hide();
-            $(elements).removeClass();
-            $('#indicator').remove();
         });
+        
     }
 }
 
 function buildIndicator() {
+    var elements = $('#directories-buttons').children();
     let youAreHere = ` 
         <span class="flex" id="indicator">
         <img src="../../res/svg/lefty.svg" alt="" class="h-[4%] w-[4%]" />
@@ -136,6 +136,8 @@ function buildIndicator() {
         <img src="../../res/svg/righty.svg" alt="" class="h-[3%] w-[3%]" />
         </span>
         `;
+    $(elements).removeClass();
+    $('#indicator').remove();
     $(youAreHere).insertBefore(currentPage.name);
     $(currentPage.name).addClass('font-times-new-roman');
 }
