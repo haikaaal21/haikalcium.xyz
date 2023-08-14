@@ -811,6 +811,10 @@ video {
   height: 20%;
 }
 
+.h-\[30\%\] {
+  height: 30%;
+}
+
 .w-3 {
   width: 0.75rem;
 }
