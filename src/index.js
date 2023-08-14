@@ -1,7 +1,7 @@
 // ! Everything's fucked, back to phase 0 and re-do the whole thing $.get is ACTUAL get
 /**
  * * What TODO :
- * * Fix deployment
+ * * Fix the routing
  */
 
 // * Routes
@@ -171,7 +171,7 @@ function isMobileDevice() {
 function init() {
   // ? This function makes sure that it takes 1 milisecond first before scrolling to the top
   if(isMobileDevice()) {
-    window.location.href = "./routes/under-construction.html"
+    window.location.href = "./mobile/mainPage.html"
   } else {
     window.onload = function() {
       setTimeout(function() {

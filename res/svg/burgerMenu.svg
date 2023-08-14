@@ -1,0 +1,10 @@
+<svg width="150" height="64" viewBox="0 0 150 64" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .fill-color {
+            fill: currentColor;
+        }
+    </style>
+    <rect width="150" height="8" class="fill-color" />
+    <rect y="28" width="150" height="8" class="fill-color" />
+    <rect y="56" width="150" height="8" class="fill-color" />
+</svg>
