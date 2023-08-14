@@ -54,7 +54,6 @@ function delegator(route) {
         $('footer').hide();
     } else {
         $('footer').show();
-        $('#footer-addition').remove();
     }
     deconstruct();
     builder(route.route, route.bodyClass);
