@@ -731,10 +731,6 @@ video {
   height: 50%;
 }
 
-.h-\[75\%\] {
-  height: 75%;
-}
-
 .h-full {
   height: 100%;
 }
@@ -746,6 +742,38 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[70\%\] {
+  height: 70%;
+}
+
+.h-\[1080px\] {
+  height: 1080px;
+}
+
+.h-\[1920px\] {
+  height: 1920px;
+}
+
+.h-\[500px\] {
+  height: 500px;
+}
+
+.h-\[600px\] {
+  height: 600px;
+}
+
+.h-\[80\%\] {
+  height: 80%;
+}
+
+.h-\[90\%\] {
+  height: 90%;
+}
+
+.h-\[84\%\] {
+  height: 84%;
 }
 
 .w-3 {
@@ -1459,6 +1487,10 @@ video {
 
   .phone\:text-\[8rem\] {
     font-size: 8rem;
+  }
+
+  .phone\:text-\[1rem\] {
+    font-size: 1rem;
   }
 }
 

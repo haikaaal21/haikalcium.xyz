@@ -7,8 +7,8 @@ let transition = new TimelineMax({paused: true}).fromTo("#transition-1", 1.5, { 
 let transition2 = new TimelineMax({paused: true}).fromTo('#transition-2',1.65 ,{ y:0 }, { y: `-100%` ,ease: Power2.easeIn} );
 let transition3 = new TimelineMax({paused: true}).fromTo('#transition-3',1.8 ,{ y:0 }, { y: `-100%` ,ease: Power2.easeIn} );
 const routes = [
-    {'name':'#home','route' : './routes/mobile_home_page.html', 'bodyClass' : 'bg-misty-rose text-gunmental h-screen'},
-    {'name':'#contact','route' : './routes/mobile_contact.html', 'bodyClass' : 'bg-misty-rose text-gunmental h-screen'},
+    {'name':'#home','route' : './routes/mobile_home_page.html', 'bodyClass' : 'bg-misty-rose text-gunmental flex items-center justify-center h-screen '},
+    {'name':'#contact','route' : './routes/mobile_contact.html', 'bodyClass' : 'bg-misty-rose text-gunmental flex items-center justify-center h-screen '},
     {'name':'#about','route' : './routes/mobile_about_me.html', 'bodyClass' : 'bg-misty-rose text-gunmental '},
 ]
 let directoryOpen = false;
@@ -49,9 +49,7 @@ function init() {
 //? Delegator is used to navigate to certain routes and tell the builder
 //? what to build
 function delegator(route) {
-    if('#indicator'.length <= 0) {
         currentPage = route;
-    }
     if(route == routes[1]) {
         $('footer').hide();
     } else {
