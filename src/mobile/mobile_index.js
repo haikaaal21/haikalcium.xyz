@@ -1,7 +1,7 @@
-// ? Initiator of the website
 $(document).ready(function () {
   init();
 });
+
 
 let transition = new TimelineMax({paused: true}).fromTo("#transition-1", 1.5, { y:0 }, { y: `-100%` ,ease: Power2.easeIn});
 let transition2 = new TimelineMax({paused: true}).fromTo('#transition-2',1.65 ,{ y:0 }, { y: `-100%` ,ease: Power2.easeIn} );
@@ -58,12 +58,17 @@ function delegator(route) {
     }
     deconstruct();
     builder(route.route, route.bodyClass);
+function init() {
+    console.log('Ready!');
+    delegator();
 }
 
-//? Builder is used to build the website
-function builder(route, bodyClass) {
-    loaded = false;
-    $.get(route, function (body) {
+function delegator() {
+    builder();
+}
+
+function builder() {
+    $.get('./routes/mobile_home_page.html', function (body) {
         $(body).insertBefore('footer');
         $('body').addClass(bodyClass);
     }).then(() => {
@@ -161,4 +166,6 @@ function buildIndicator() {
     $('#indicator').remove();
     $(youAreHere).insertBefore(currentPage.name);
     $(currentPage.name).addClass('font-times-new-roman');
+
+    });
 }

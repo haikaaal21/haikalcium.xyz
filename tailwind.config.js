@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'kalbobox' : `url("../res/svg/burgerMenu.svg")`,
+        'kalbobox' : `url('data:image/svg+xml,<svg width="150" height="64" viewBox="0 0 150 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="8" fill="black"/><rect y="28" width="150" height="8" fill="black"/><rect y="56" width="150" height="8" fill="black"/></svg>')`,
       },
       colors: {
         'indian-red' : '#D26F71',
