@@ -1,3 +1,4 @@
+<!--! Fix the mobile screen configuration so it doesn't overflow!-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,14 +9,130 @@
     <title>haikalcium.xyz</title>
   </head>
   <header
+
+    class="flex fixed top-0 w-full text-gunmental px-[5%] py-[8%] phone:text-[0.7rem] z-20 md:text-[1.2rem] justify-between"
+  >
+    <div class="flex items-start flex-col">
+      <button class="font-cosmos tracking-wide" onclick="goToHome()">
+        haikalcium<b class="phone:text-[0.4rem]">.xyz</b>
+      </button>
+
     class="fixed flex w-full px-[3%] py-[2%] phone:text-[0.7rem] md:text-[1.2rem] justify-between top-0"
   >
     <div class="flex flex-col">
       <p class="font-cosmos tracking-wide">haikalcium.xyz</p>
+
       <p id="time-text" class="phone:text-[0.56rem]">LOCATION / 00:00:00</p>
     </div>
     <div class="bg-kalbobox bg-contain bg-no-repeat w-[8%]"></div>
   </header>
+
+  <body class="overflow-hidden">
+    <!-- * Content is right here -->
+    <!-- * Transition page is right here -->
+    <div
+      id="transition-1"
+      class="fixed h-screen flex items-center justify-center top-0 bg-ultramarine-blue w-full z-50"
+    >
+      <img
+        src="../../res/img/logo.png"
+        alt=""
+        class="object-contain w-[130px] h-[130px]"
+        srcset=""
+      />
+    </div>
+    <div
+      id="transition-2"
+      class="fixed h-screen top-0 bg-indian-red w-[100%] z-40"
+    ></div>
+    <div
+      id="transition-3"
+      class="fixed h-screen top-0 bg-dessert-yellow w-[100%] z-30"
+    ></div>
+    <!-- * Navigator page is right here -->
+    <div
+      id="directories-page"
+      class="z-10 h-screen fixed w-full top-0 text-white"
+    >
+      <div id="curtains" class="relative flex z-0 h-full flex-col">
+        <div
+          class="border border-bittersweet-shimmer bg-indian-red h-[12.5%]"
+        ></div>
+        <div
+          class="border border-bittersweet-shimmer bg-indian-red h-[12.5%]"
+        ></div>
+        <div
+          class="border border-bittersweet-shimmer flex items-center bg-indian-red h-[12.5%]"
+        >
+          <h1 class="font-bold text-bittersweet-shimmer text-[6rem]">02</h1>
+        </div>
+        <div
+          class="border border-bittersweet-shimmer bg-indian-red h-[12.5%]"
+        ></div>
+        <div
+          class="border border-bittersweet-shimmer bg-indian-red h-[12.5%]"
+        ></div>
+        <div
+          class="border border-bittersweet-shimmer bg-indian-red h-[12.5%]"
+        ></div>
+        <div
+          class="border border-bittersweet-shimmer bg-indian-red h-[12.5%]"
+        ></div>
+        <div
+          class="border border-bittersweet-shimmer bg-indian-red h-[12.5%]"
+        ></div>
+      </div>
+      <div
+        id="directories-content"
+        class="z-20 absolute top-0 pt-[40%] h-[80%] flex flex-col justify-between py-[10%] pl-[5%]"
+      >
+        <div id="directories-buttons" class="phone:text-[3rem]">
+          <button id="home">HOME</button><br />
+          <button id="about">ABOUT ME</button><br />
+          <button id="archive">ARCHIVE</button><br />
+          <button id="contact">CONTACT</button>
+        </div>
+        <p class="phone:text-[0.8rem] w-[50%]">
+          Artwork of the lizard was made by
+          <a
+            class="underline italic"
+            href="https://waffle1311.carrd.co/"
+            target="_blank"
+            >@waffle1311</a
+          >.
+        </p>
+        <div>
+          <p>Drop me a line!</p>
+          <ul class="italic phone:text-[0.8rem]">
+            <li>
+              <a
+                class="underline"
+                href="https://www.linkedin.com/in/muhammad-haikal-715273261"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                class="underline"
+                href="mailto: muhammad.haikal100602@gmail.com?subject=Hello%20Kal!&body=Hi%20Kal!%20I'm%20here%20to%20reach%20out%20to%20you!"
+                target="_blank"
+                >muhammad.haikal100602@gmail.com</a
+              >
+            </li>
+            <li>
+              <a
+                class="underline"
+                href="https://github.com/haikaaal21"
+                target="_blank"
+                >Github</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- * Scripts are right here -->
   <body class="bg-misty-rose text-gunmental flex flex-col">
     <!-- Content is right here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -28,6 +145,9 @@
     ></script>
     <script src="mobile_index.js"></script>
   </body>
+
+  <footer class="w-full z-0 flex flex-col h-[30%]">
+
   <footer class="absolute bottom-0 w-full flex flex-col h-[15%]">
     <div class="h-[50%] z-0 flex flex-col justify-end">
       <img
@@ -38,32 +158,39 @@
       />
     </div>
     <div
-      class="bg-ultramarine-blue phone:text-[0.67rem] px-[3%] flex items-center justify-between text-gunmental h-[50%] z-10"
+      class="z-0 phone:text-[0.8rem] px-[5%] flex py-[8%] items-center flex-col justify-end text-gunmental h-full"
     >
       <h1>@Muhammad Haikal</h1>
-      <ul class="flex justify-evenly w-[34%]">
-        <a
-          href="https://www.linkedin.com/in/muhammad-haikal-715273261"
-          target="_blank"
-          class="h-[10%] w-[10%] text-gunmental"
-        >
-          <i class="fa-brands fa-linkedin-in scale-[120%]"></i>
-        </a>
-        <a
-          href="https://github.com/haikaaal21"
-          target="_blank"
-          class="h-[10%] w-[10%] text-gunmental"
-        >
-          <i class="fa-brands fa-github-alt scale-[140%]"></i>
-        </a>
+      <ul class="flex justify-evenly py-[4%] w-[75%]">
+        <div class="bg-gunmental py-[10px] px-[14px] rounded-full">
+          <a
+            href="https://www.linkedin.com/in/muhammad-haikal-715273261"
+            target="_blank"
+            class="h-[10%] w-[10%] text-white"
+          >
+            <i class="fa-brands fa-linkedin-in scale-[120%]"></i>
+          </a>
+        </div>
+        <div class="bg-gunmental py-[10px] px-[14px] rounded-full">
+          <a
+            href="https://github.com/haikaaal21"
+            target="_blank"
+            class="h-[10%] w-[10%] text-white"
+          >
+            <i class="fa-brands fa-github-alt scale-[140%]"></i>
+          </a>
+        </div>
+        <div class="bg-gunmental py-[10px] px-[14px] rounded-full">
+
         <a
           href="mailto: muhammad.haikal100602@gmail.com?subject=Hello%20Kal!&body=Hi%20Kal!%20I'm%20here%20to%20reach%20out%20to%20you!"
           target="_blank"
-          class="h-[10%] w-[10%] text-gunmental"
+          class="h-[10%] w-[10%] text-white"
         >
           <i class="fa-solid fa-envelope scale-[120%]"></i>
         </a>
       </ul>
+      </div>
     </div>
   </footer>
 </html>
