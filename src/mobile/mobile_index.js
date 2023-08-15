@@ -10,6 +10,7 @@ const routes = [
     {'name':'#home','route' : './routes/mobile_home_page.html','bodyClass' : 'bg-misty-rose text-gunmental flex flex-col items-center justify-center h-screen '},
     {'name':'#contact','route' : './routes/mobile_contact.html','bodyClass' : 'bg-misty-rose text-gunmental flex flex-col items-center justify-between h-screen '},
     {'name':'#about','route' : './routes/mobile_about_me.html', 'bodyClass' : 'bg-misty-rose text-gunmental flex flex-col items-center justify-center '},
+    {'name':'#archive','route' : './routes/mobile_archive.html', 'bodyClass' : 'bg-misty-rose text-gunmental flex flex-col items-center justify-center '},
 ]
 let directoryOpen = false;
 let directoriesTransition;
@@ -43,7 +44,7 @@ function init() {
     mainTransitionPlay(false);
     createDirectoriesTransition();
     $('#directories-page').hide();
-
+    
 }
 
 //? Delegator is used to navigate to certain routes and tell the builder
@@ -75,6 +76,25 @@ function deconstruct() {
     $('#body').remove();
 }
 
+function navigateToAboutMe() {
+    mainTransitionPlay(true);
+    setTimeout(() => {
+        delegator(routes[2]);
+        mainTransitionPlay(false);
+    },2000);
+}
+
+function goToHome() {
+    mainTransitionPlay(true);
+    if(directoryOpen){
+        openAndCloseTransition();
+    }
+    setTimeout(() => {
+        delegator(routes[0]);
+        mainTransitionPlay(false);
+    },2000);
+}
+
 function mainTransitionPlay(reverse) {
     console.log(reverse);
     if(reverse) {
@@ -98,8 +118,9 @@ $('#about').click(()=>{
    clickFunc(routes[2]);
 });
 $('#archive').click(()=>{
-    window.location.href = '../routes/under-construction.html';
+    clickFunc(routes[3]);
 });
+
 
 function clickFunc(route) {
     delegator(route);

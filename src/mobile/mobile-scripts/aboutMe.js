@@ -1,7 +1,4 @@
-console.log('aboutMe.js loaded');
-
-
-  $(document).ready(init);
+$(document).ready(init);
 
   function init() {
     const cv = [
