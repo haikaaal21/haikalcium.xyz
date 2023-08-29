@@ -1,5 +1,0 @@
-1. Refactor Architecture
-2. Create the tag linking
-3. Prevent people from scrounging on website
-4. Compress images
- 
